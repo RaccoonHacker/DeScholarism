@@ -58,8 +58,8 @@
 
 1.  **克隆仓库**
     ```bash
-    git clone [https://github.com/your-username/descholar.git](https://github.com/your-username/descholar.git)
-    cd descholar
+    git clone https://github.com/RaccoonHacker/DeScholarism.git
+    cd descholarism
     ```
 
 2.  **安装依赖**
