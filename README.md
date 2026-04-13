@@ -1,165 +1,86 @@
-# desci
+# DeScholarism: 去中心化学术版权保护与托管平台
 
-Next.js starter with Tailwind CSS, `@solana/kit`, and an Anchor vault program example.
+> **Solana Frontier Hackathon (Colosseum)** > **Track:** Identity & Privacy  
+> **Tag:** DeSci, Intellectual Property, Proof of Provenance
 
-## Getting Started
+---
 
-```shell
-npx -y create-solana-dapp@latest -t solana-foundation/templates/kit/desci
-```
+## 🌟 项目愿景 (Vision)
+在传统学术领域，论文的知识产权保护往往依赖于中心化的期刊或预印本平台，存在审核周期长、所有权界定模糊以及潜在的剽窃风险。**DeScholar** 利用 Solana 的高性能区块链技术与 IPFS 分布式存储，为全球研究者提供一个去中心化的科学（DeSci）基础设施。
 
-```shell
-npm install
-npm run setup   # Builds the Anchor program and generates the TypeScript client
-npm run dev
-```
+我们的核心卖点是：**“上传即确权”**。通过将论文内容的哈希值永久锚定在 Solana 链上，为每一篇学术成果提供不可篡改的“出生证明”。
 
-Open [http://localhost:3000](http://localhost:3000), connect your wallet, and interact with the vault.
+---
 
-## What's Included
+## 🛠 技术栈 (Tech Stack)
 
-- **Wallet connection** via wallet-standard with auto-discovery and dropdown UI
-- **Cluster switching** — devnet, testnet, mainnet, and localnet from the header
-- **Wallet balance** display with airdrop button (devnet/testnet/localnet)
-- **SOL Vault program** — deposit and withdraw SOL from a personal PDA vault
-- **Toast notifications** with explorer links for every transaction
-- **Error handling** — human-readable messages for common Solana and program errors
-- **Codama-generated client** — type-safe program interactions using `@solana/kit`
-- **Tailwind CSS v4** with light/dark mode toggle
+| 层级 | 技术选型 |
+| :--- | :--- |
+| **前端 (Frontend)** | React, Next.js, TypeScript, Tailwind CSS |
+| **智能合约 (Smart Contract)** | Anchor Framework (Rust) |
+| **链交互 (Blockchain SDK)** | `@solana/web3.js`, `@coral-xyz/anchor` |
+| **身份认证 (Identity)** | Solana Wallet Adapter (Phantom, Solflare) |
+| **分布式存储 (Storage)** | IPFS (via Pinata / Web3.Storage) |
+| **部署网络 (Network)** | Solana Devnet |
 
-## Stack
+---
 
-| Layer          | Technology                       |
-| -------------- | -------------------------------- |
-| Frontend       | Next.js 16, React 19, TypeScript |
-| Styling        | Tailwind CSS v4                  |
-| Solana Client  | `@solana/kit`, wallet-standard   |
-| Program Client | Codama-generated, `@solana/kit`  |
-| Program        | Anchor (Rust)                    |
+## 🚀 MVP 核心功能 (Core Features)
 
-## Project Structure
+1.  **身份认证 (Wallet Login)**: 支持 Phantom, Solflare 等主流 Solana 钱包登录，建立基于钱包地址的去中心化作者身份。
+2.  **内容发布 (Upload & Metadata)**: 作者上传 PDF 论文并填写标题、摘要、关键词等元数据。
+3.  **链上存证 (On-chain Hash)**: 提取论文文件哈希（CID），通过 Anchor 合约将哈希、作者信息及时间戳存入 Solana PDA（程序派生地址）。
+4.  **学术探索 (Discovery)**: 提供公开的论文检索门户，支持按领域、标题或作者搜索。
+5.  **规范引用 (Citations)**: 自动生成符合 BibTeX, APA 等格式的学术引用代码，方便他人引用。
+6.  **开放评论 (Open Review)**: 基于 Web3 的开放式评价系统，鼓励社区同行评审。
+7.  **学术档案 (Author Profile)**: 展示作者名下的所有存证作品及学术影响力指标。
+8.  **权威核验 (Verification)**: 任何第三方只需上传原文件，系统即可比对链上哈希，秒速验证该论文的真实性与原始发布时间。
 
-```
-├── app/
-│   ├── components/
-│   │   ├── cluster-context.tsx  # Cluster state (React context + localStorage)
-│   │   ├── cluster-select.tsx   # Cluster switcher dropdown
-│   │   ├── grid-background.tsx  # Solana-branded decorative grid
-│   │   ├── providers.tsx        # Wallet + theme providers
-│   │   ├── theme-toggle.tsx     # Light/dark mode toggle
-│   │   ├── vault-card.tsx       # Vault deposit/withdraw UI
-│   │   └── wallet-button.tsx    # Wallet connect/disconnect dropdown
-│   ├── generated/vault/        # Codama-generated program client
-│   ├── lib/
-│   │   ├── wallet/             # Wallet-standard connection layer
-│   │   │   ├── types.ts        # Wallet types
-│   │   │   ├── standard.ts     # Wallet discovery + session creation
-│   │   │   ├── signer.ts       # WalletSession → TransactionSigner
-│   │   │   └── context.tsx     # WalletProvider + useWallet() hook
-│   │   ├── hooks/
-│   │   │   ├── use-balance.ts  # SWR-based balance fetching
-│   │   │   └── use-send-transaction.ts  # Transaction send with loading state
-│   │   ├── cluster.ts          # Cluster endpoints + RPC factory
-│   │   ├── lamports.ts         # SOL/lamports conversion
-│   │   ├── send-transaction.ts # Transaction build + sign + send pipeline
-│   │   ├── errors.ts           # Transaction error parsing
-│   │   └── explorer.ts         # Explorer URL builder + address helpers
-│   └── page.tsx                # Main page
-├── anchor/                     # Anchor workspace
-│   └── programs/vault/         # Vault program (Rust)
-└── codama.json                 # Codama client generation config
-```
+---
 
-## Local Development
+## 🏗 架构说明 (Architecture)
 
-To test against a local validator instead of devnet:
+* **存储层**: 论文原文存储在 IPFS，确保内容的去中心化与持久性。
+* **合约层**: Solana 合约存储 `Owner`, `IPFS_Hash`, `Timestamp`。
+* **应用层**: Next.js 应用负责处理文件处理、哈希生成（SHA-256）以及与链端的通信。
 
-1. **Start a local validator**
+---
 
-   ```bash
-   solana-test-validator
-   ```
+## 📦 快速开始 (Quick Start)
 
-2. **Deploy the program locally**
+### 前提条件
+* **Node.js**: `v18+`
+* **Solana CLI**: 最新稳定版
+* **Anchor Framework**: `v0.29.0+`
+* **浏览器插件**: 安装了 Phantom 或 Solflare 钱包，并切换至 **Devnet**
 
-   ```bash
-   solana config set --url localhost
-   cd anchor
-   anchor build
-   anchor deploy
-   cd ..
-   npm run codama:js   # Regenerate client with local program ID
-   ```
+### 本地开发步骤
 
-3. **Switch to localnet** in the app using the cluster selector in the header.
+1.  **克隆仓库**
+    ```bash
+    git clone [https://github.com/your-username/descholar.git](https://github.com/your-username/descholar.git)
+    cd descholar
+    ```
 
-## Deploy Your Own Vault
+2.  **安装依赖**
+    ```bash
+    npm install
+    ```
 
-The included vault program is already deployed to devnet. To deploy your own:
+3.  **编译并部署合约**
+    ```bash
+    cd anchor
+    anchor build
+    anchor deploy --provider.cluster devnet
+    ```
 
-### Prerequisites
+4.  **启动前端应用**
+    ```bash
+    cd ..
+    npm run dev
+    ```
 
-- [Rust](https://rustup.rs/)
-- [Solana CLI](https://solana.com/docs/intro/installation)
-- [Anchor](https://www.anchor-lang.com/docs/installation)
+---
 
-### Steps
-
-1. **Configure Solana CLI for devnet**
-
-   ```bash
-   solana config set --url devnet
-   ```
-
-2. **Create a wallet (if needed) and fund it**
-
-   ```bash
-   solana-keygen new
-   solana airdrop 2
-   ```
-
-3. **Build and deploy the program**
-
-   ```bash
-   cd anchor
-   anchor build
-   anchor keys sync    # Updates program ID in source
-   anchor build        # Rebuild with new ID
-   anchor deploy
-   cd ..
-   ```
-
-4. **Regenerate the client and restart**
-   ```bash
-   npm run setup   # Rebuilds program and regenerates client
-   npm run dev
-   ```
-
-## Testing
-
-Tests use [LiteSVM](https://github.com/LiteSVM/litesvm), a fast lightweight Solana VM for testing.
-
-```bash
-npm run anchor-build   # Build the program first
-npm run anchor-test    # Run tests
-```
-
-The tests are in `anchor/programs/vault/src/tests.rs` and automatically use the program ID from `declare_id!`.
-
-## Regenerating the Client
-
-If you modify the program, regenerate the TypeScript client:
-
-```bash
-npm run setup   # Or: npm run anchor-build && npm run codama:js
-```
-
-This uses [Codama](https://github.com/codama-idl/codama) to generate a type-safe client from the Anchor IDL.
-
-## Learn More
-
-- [Solana Docs](https://solana.com/docs) — core concepts and guides
-- [Anchor Docs](https://www.anchor-lang.com/docs/introduction) — program development framework
-- [Deploying Programs](https://solana.com/docs/programs/deploying) — deployment guide
-- [@solana/kit](https://github.com/anza-xyz/kit) — Solana JavaScript SDK
-- [Codama](https://github.com/codama-idl/codama) — client generation from IDL
+## 🛡 身份与隐私保护 (Identity & Privacy Focus)
+通过利用 Solana 的时间戳机制，DeScholar 确保了作者对研究成果的“优先发现权”具有数学上的不可篡改性。同时，通过去中心化身份（Wallet-as-ID），研究者可以摆脱对特定学术机构账号的依赖，真正实现学术成果的自主所有权。
