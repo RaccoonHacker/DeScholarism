@@ -33,7 +33,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-on-surface-variant opacity-80">
               <li><a href="https://github.com/RaccoonHacker/DeScholarism" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">文档</a></li>
               <li><a href="https://github.com/RaccoonHacker" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">GitHub</a></li>
-              <li><a href="https://github.com/RaccoonHacker/DeScholar/tree/main/target/idl" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">Anchor IDL</a></li>
+              <li><a href="https://solana.com/zh" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">Solana</a></li>
             </ul>
           </div>
 
