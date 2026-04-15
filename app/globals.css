@@ -1,94 +1,56 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #171717;
-  --primary-foreground: #fafafa;
-  --muted: #737373;
-  --muted-foreground: #737373;
-  --card: #ffffff;
-  --card-foreground: #0a0a0a;
-  --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-  --border: #e5e5e5;
-  --border-low: #f5f5f5;
-  --input: #e5e5e5;
-  --accent: #f5f5f5;
-  --accent-foreground: #171717;
-  --cream: #f5f5f5;
-  --destructive: #ef4444;
-  --destructive-foreground: #ef4444;
-  --ring: #a3a3a3;
-  --radius: 0.625rem;
-  --secondary: #f5f5f5;
-  --secondary-foreground: #171717;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+/* Tailwind v4 主题配置 */
+@theme {
+  /* 定义颜色变量，这样你可以直接使用 text-primary, bg-primary 等 */
+  --color-primary: #7c1ae2;
+  --color-surface: #f5f7f9;
+  --color-on-surface: #2c2f31;
+  
+  /* 定义字体 */
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #171717;
-  --muted: #a3a3a3;
-  --muted-foreground: #737373;
-  --card: #171717;
-  --card-foreground: #fafafa;
-  --popover: #171717;
-  --popover-foreground: #fafafa;
-  --border: #262626;
-  --border-low: rgba(38, 38, 38, 0.5);
-  --input: #262626;
-  --accent: #262626;
-  --accent-foreground: #fafafa;
-  --cream: #262626;
-  --destructive: #ef4444;
-  --destructive-foreground: #ef4444;
-  --ring: #525252;
-  --secondary: #262626;
-  --secondary-foreground: #fafafa;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-border: var(--border);
-  --color-border-low: var(--border-low);
-  --color-input: var(--input);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-cream: var(--cream);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-ring: var(--ring);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
+/* 基础样式重置与设置 */
 @layer base {
-  * {
-    @apply border-border outline-transparent;
+  body {
+    @apply bg-surface text-on-surface font-sans;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 布局与组件样式 */
+@layer components {
+  /* 玻璃拟态导航栏 */
+  .glass-nav {
+    background: rgba(245, 247, 249, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-sans);
+  /* 自定义钱包按钮样式适配 - 强制覆盖适配器默认样式 */
+  .wallet-adapter-button {
+    background-color: #7c1ae2 !important; /* 直接使用色值确保覆盖成功 */
+    font-family: "Inter", sans-serif !important;
+    font-size: 14px !important;
+    height: 40px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease;
+  }
+
+  .wallet-adapter-button:hover {
+    background-color: #6a16c1 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 26, 226, 0.2);
+  }
+}
+
+/* 实用工具类 */
+@layer utilities {
+  .font-headline {
+    font-family: var(--font-headline);
   }
 }
