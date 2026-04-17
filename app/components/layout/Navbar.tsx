@@ -21,6 +21,7 @@ export default function Navbar() {
           <Link href="/explore" className="hover:text-primary transition-colors">探索</Link>
           <Link href="/publish" className="hover:text-primary transition-colors">发布</Link>
           <Link href="/verify" className="hover:text-primary transition-colors">验证</Link>
+          <Link href="/register" className="hover:text-primary transition-colors">成为研究者</Link>
         </nav>
       </div>
       

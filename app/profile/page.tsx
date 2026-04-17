@@ -96,11 +96,7 @@ export default function ResearcherProfile() {
           <button className="flex items-center gap-3 px-4 py-3 w-full text-primary font-bold bg-white rounded-lg shadow-sm border border-primary/10">
             <span className="material-symbols-outlined text-[20px]">description</span> 
             <span className="text-sm">我的论文</span>
-          </button>
-          <button className="flex items-center gap-3 px-4 py-3 w-full text-on-surface-variant hover:bg-black/5 rounded-lg transition-colors">
-            <span className="material-symbols-outlined text-[20px]">verified_user</span> 
-            <span className="text-sm">版权证明</span>
-          </button>
+          </button> 
         </nav>
       </aside>
 
@@ -121,10 +117,6 @@ export default function ResearcherProfile() {
           <div className="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm">
             <p className="text-[10px] font-bold text-outline uppercase tracking-widest">已发表论文</p>
             <p className="text-4xl font-headline font-bold mt-2 text-primary">{myPapers.length}</p>
-          </div>
-          <div className="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm">
-            <p className="text-[10px] font-bold text-outline uppercase tracking-widest">链上引用</p>
-            <p className="text-4xl font-headline font-bold mt-2 text-on-surface">0</p>
           </div>
         </div>
 
@@ -159,7 +151,7 @@ export default function ResearcherProfile() {
                     <div className="flex gap-4 text-[10px] font-mono text-outline/80 bg-surface px-3 py-2 rounded-lg">
                       <span className="flex items-center gap-1">
                         <span className="material-symbols-outlined text-[12px]">database</span>
-                        CID: {paper.ipfsCid.slice(0, 8)}...
+                        CID: {(paper.ipfsHash || paper.ipfs_hash || "").slice(0, 8)}...
                       </span>
                       <span className="flex items-center gap-1">
                         <span className="material-symbols-outlined text-[12px]">verified</span>

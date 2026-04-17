@@ -70,7 +70,7 @@ pub struct PublishPaper<'info> {
         payer = authority,
         // 扩容：8(disc) + 32(pubkey) + 100(title) + 100(ipfs) + 1024(metadata) + 8(time) + 1(bump)
         space = 8 + 32 + 100 + 100 + 1024 + 8 + 1, 
-        seeds = [b"paper", authority.key().as_ref(), ipfs_hash.as_bytes()],
+        seeds = [b"paper", authority.key().as_ref(), ipfs_hash.as_bytes()[..31].as_ref()],
         bump
     )]
     pub paper: Account<'info, Paper>,
