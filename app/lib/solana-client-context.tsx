@@ -8,7 +8,7 @@ const SolanaClientContext = createContext<SolanaClient | null>(null);
 
 export function SolanaClientProvider({ children }: { children: ReactNode }) {
   const { cluster } = useCluster();
-  const client = useMemo(() => createSolanaClient(cluster), [cluster]);
+  const client = useMemo(() => createSolanaClient(cluster as any), [cluster]);
 
   return (
     <SolanaClientContext.Provider value={client}>
