@@ -137,7 +137,7 @@ export default function RegisterPage() {
           <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <span className="material-symbols-outlined text-4xl text-primary">fingerprint</span>
           </div>
-          <h1 className="text-3xl font-bold font-headline text-on-surface">加入 SolSci</h1>
+          <h1 className="text-3xl font-bold font-headline text-on-surface">加入 DeScholarism </h1>
           <p className="text-on-surface-variant mt-2">创建您的去中心化学术档案</p>
         </div>
 

@@ -108,7 +108,7 @@ export default function ResearcherProfile() {
           </div>
           <h1 className="text-5xl font-bold font-headline tracking-tighter mb-4 text-on-surface">实验室控制台</h1>
           <p className="text-on-surface-variant max-w-2xl font-light leading-relaxed">
-            此处展示您在 SolSci 协议中的所有链上科研贡献。每一份论文均通过 IPFS 永久存储。
+            此处展示您在 DeScholarism  协议中的所有链上科研贡献。每一份论文均通过 IPFS 永久存储。
           </p>
         </section>
 
