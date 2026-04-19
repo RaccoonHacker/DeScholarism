@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <span className="material-symbols-outlined text-primary text-2xl">science</span>
-              <span className="text-xl font-bold font-headline tracking-tight text-on-surface">SolSci</span>
+              <span className="text-xl font-bold font-headline tracking-tight text-on-surface">DeScholarism </span>
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed opacity-70">
               基于 Solana 构建的去中心化学术出版与版权核验协议。
@@ -49,7 +49,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-outline-variant/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-xs text-outline opacity-60">
-            © 2026 SolSci Protocol. 基于 Solana 区块链。
+            © 2026 DeScholarism  Protocol. 基于 Solana 区块链。
           </div>
           <div className="flex gap-6">
             <a href="#" className="text-outline hover:text-primary transition-colors">

@@ -16,7 +16,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 glass-nav flex justify-between items-center px-8 py-4 border-b border-outline-variant/10">
       <div className="flex items-center gap-8">
         {/* Logo 点击回首页 */}
-        <Link href="/" className="text-2xl font-bold tracking-tighter font-headline">SolSci</Link>
+        <Link href="/" className="text-2xl font-bold tracking-tighter font-headline">DeScholarism </Link>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           <Link href="/explore" className="hover:text-primary transition-colors">探索</Link>
           <Link href="/publish" className="hover:text-primary transition-colors">发布</Link>
