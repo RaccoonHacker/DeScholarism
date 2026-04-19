@@ -73,6 +73,7 @@
 在项目根目录创建 `.env` 文件并配置：
 ```env
 NEXT_PUBLIC_PINATA_JWT=你的Pinata_JWT令牌
+```
 
 ### 本地开发步骤
 
@@ -100,3 +101,7 @@ NEXT_PUBLIC_PINATA_JWT=你的Pinata_JWT令牌
     npm run dev
     ```
 
+
+
+
+![home](/image.png)
