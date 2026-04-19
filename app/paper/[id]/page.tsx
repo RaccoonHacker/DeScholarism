@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { Program, AnchorProvider, BN } from "@coral-xyz/anchor";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
-import idlRaw from "@/anchor/target/idl/descholar.json";
+import idlRaw from "@/anchor/target/idl/descholarism.json";
 
 export default function PaperDetails() {
   const { id } = useParams(); // 这里的 id 其实就是 Paper 的 PDA 公钥字符串

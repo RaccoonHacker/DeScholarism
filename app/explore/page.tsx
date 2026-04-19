@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Program, AnchorProvider } from '@coral-xyz/anchor';
 import { PublicKey } from '@solana/web3.js';
-import idlRaw from '@/anchor/target/idl/descholar.json';
+import idlRaw from '@/anchor/target/idl/descholarism.json';
 import PaperCard from '../components/shared/PaperCard';
 
 const programId = new PublicKey("81yXP67oLaVK2bo3KGwk6zNFZiuCn5uss1DWaM8vshm6");

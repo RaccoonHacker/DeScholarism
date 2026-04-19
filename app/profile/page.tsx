@@ -7,7 +7,7 @@ import { PublicKey } from '@solana/web3.js';
 import Link from 'next/link';
 
 // 导入 IDL
-import idlRaw from '../../anchor/target/idl/descholar.json';
+import idlRaw from '../../anchor/target/idl/descholarism.json';
 
 const programId = new PublicKey("81yXP67oLaVK2bo3KGwk6zNFZiuCn5uss1DWaM8vshm6");
 

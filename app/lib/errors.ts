@@ -2,37 +2,39 @@ import {
   isSolanaError,
   SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM,
 } from "@solana/kit";
-import {
-  getVaultErrorMessage,
-  VAULT_ERROR__VAULT_ALREADY_EXISTS,
-  VAULT_ERROR__INVALID_AMOUNT,
-  type VaultError,
-} from "../generated/vault";
+// 整体导入，避免找不到成员的编译错误
+import * as Generated from "../generated/descholarism";
 
-const VAULT_ERROR_CODES: Record<number, VaultError> = {
-  [VAULT_ERROR__VAULT_ALREADY_EXISTS]: VAULT_ERROR__VAULT_ALREADY_EXISTS,
-  [VAULT_ERROR__INVALID_AMOUNT]: VAULT_ERROR__INVALID_AMOUNT,
-};
+/**
+ * 尝试从生成的模块中寻找错误解析函数
+ * Codama 可能生成的名称：getDescholarismErrorMessage 或 getDescholarismProgramErrorMessage
+ */
+const getErrorMessageFn = 
+  (Generated as any).getDescholarismErrorMessage || 
+  (Generated as any).getDescholarismProgramErrorMessage ||
+  ((code: number) => `Unknown Program Error: ${code}`);
 
 export function parseTransactionError(err: unknown): string {
-  // Wallet rejection (comes from wallet-standard, not a SolanaError)
+  // 1. 钱包拒绝错误处理
   if (err instanceof Error && err.message.includes("User rejected")) {
-    return "Transaction was rejected by the wallet.";
+    return "交易已被钱包拒绝。";
   }
 
-  // Anchor custom program errors — use the Codama-generated error messages
+  // 2. 处理 Solana 自定义程序错误 (Custom Program Error)
   if (
     isSolanaError(err, SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM) &&
     typeof err.context?.code === "number"
   ) {
-    const vaultError = VAULT_ERROR_CODES[err.context.code];
-    if (vaultError !== undefined) {
-      return getVaultErrorMessage(vaultError);
+    const code = err.context.code;
+    try {
+      // 直接调用探测到的解析函数
+      return getErrorMessageFn(code);
+    } catch (e) {
+      return `程序错误 (代码: ${code})`;
     }
   }
 
-  // For all other errors, kit's SolanaError already has readable messages.
-  // Walk the cause chain to find the deepest message.
+  // 3. 兜底逻辑：获取最深层的错误消息
   const message = getDeepestMessage(err);
   return message.length > 200 ? `${message.slice(0, 200)}...` : message;
 }

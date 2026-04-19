@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Program, AnchorProvider, BN } from '@coral-xyz/anchor';
 import { PublicKey, SystemProgram } from '@solana/web3.js';
-import idlRaw from '@/anchor/target/idl/descholar.json';
+import idlRaw from '@/anchor/target/idl/descholarism.json';
 import axios from 'axios';
 
 // 工具函数：计算文件哈希（如果还没写，可以用这个简单的实现）

@@ -5,7 +5,7 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Program, AnchorProvider } from '@coral-xyz/anchor';
 import { PublicKey, SystemProgram } from '@solana/web3.js';
 import { useRouter } from 'next/navigation';
-import idlRaw from '@/anchor/target/idl/descholar.json';
+import idlRaw from '@/anchor/target/idl/descholarism.json';
 
 export default function RegisterPage() {
   const { connection } = useConnection();

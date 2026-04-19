@@ -3,7 +3,7 @@ use anchor_lang::prelude::*;
 declare_id!("81yXP67oLaVK2bo3KGwk6zNFZiuCn5uss1DWaM8vshm6");
 
 #[program]
-pub mod descholar {
+pub mod descholarism {
     use super::*;
 
     pub fn initialize_author(ctx: Context<InitializeAuthor>, name: String) -> Result<()> {

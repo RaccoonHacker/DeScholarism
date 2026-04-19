@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useConnection } from '@solana/wallet-adapter-react';
 // 1. 切换到新版官方包
 import { Program, AnchorProvider, web3 } from '@coral-xyz/anchor';
-import idlRaw from '@/anchor/target/idl/descholar.json';
+import idlRaw from '@/anchor/target/idl/descholarism.json';
 
 // 将 IDL 转换为 any 以获得更好的兼容性支持
 const idl = idlRaw as any;

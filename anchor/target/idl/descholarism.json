@@ -1,10 +1,10 @@
 {
   "address": "81yXP67oLaVK2bo3KGwk6zNFZiuCn5uss1DWaM8vshm6",
   "metadata": {
-    "name": "descholar",
+    "name": "descholarism",
     "version": "0.1.0",
     "spec": "0.1.0",
-    "description": "A simple SOL vault program"
+    "description": "A simple SOL descholarism program"
   },
   "instructions": [
     {
